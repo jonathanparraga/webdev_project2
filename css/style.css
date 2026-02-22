@@ -299,3 +299,38 @@ main h2::before {
 }
 
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.page-home main > h2 {
+  margin-top: 1.5rem;
+}
+
+.page-home main > figure,
+.page-home main > img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-home main > figure {
+  max-width: 44rem;
+}
+
+.page-home main > img {
+  max-width: 44rem;
+}
+
+.page-home main > h3 {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.page-home main {
+  max-width: 62rem;
+}
+nav a.active {
+  background-color: rgba(214, 180, 58, 0.18);
+  border-color: rgba(214, 180, 58, 0.45);
+}
