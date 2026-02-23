@@ -14,13 +14,21 @@
   --shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.35);
   --radius: 1.1rem;
   --max: 72rem;
+  --img-fixed: 44rem; /* ancho fijo visual para imágenes en desktop */
 }
 
 html {
   font-size: 100%;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
   font-family: "Montserrat", Arial, sans-serif;
   line-height: 1.55;
   color: var(--text);
@@ -58,6 +66,7 @@ h3 {
   font-family: Georgia, "Times New Roman", serif;
   letter-spacing: 0.01em;
   line-height: 1.18;
+  color: rgba(255, 255, 255, 0.96);
 }
 
 h1 {
@@ -102,6 +111,9 @@ header {
   border: 0.08rem solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  animation:
+    fade-up 0.7s ease-out both,
+    soft-glow 3.2s ease-in-out 0.7s 1;
 }
 
 header p {
@@ -121,6 +133,10 @@ header ul {
   gap: 0.75rem;
 }
 
+nav li {
+  margin: 0;
+}
+
 nav a,
 header + ul a,
 header ul a {
@@ -130,6 +146,11 @@ header ul a {
   border-radius: 999rem;
   background-color: rgba(255, 255, 255, 0.08);
   border: 0.08rem solid rgba(255, 255, 255, 0.10);
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 nav a:hover,
@@ -140,6 +161,13 @@ header ul a:hover,
 header ul a:focus {
   background-color: rgba(255, 255, 255, 0.14);
   border-color: rgba(214, 180, 58, 0.35);
+  transform: translateY(-0.12rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.22);
+}
+
+nav a.active {
+  background-color: rgba(214, 180, 58, 0.18);
+  border-color: rgba(214, 180, 58, 0.45);
 }
 
 main {
@@ -150,10 +178,18 @@ main {
   border: 0.08rem solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  animation: fade-up 0.85s ease-out both;
 }
 
 main > *:first-child {
   margin-top: 0;
+}
+
+main::after,
+article::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 main section,
@@ -163,6 +199,17 @@ main article {
   border-radius: 0.9rem;
   background-color: var(--panel-2);
   border: 0.08rem solid rgba(255, 255, 255, 0.10);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+main section:hover,
+main article:hover {
+  transform: translateY(-0.12rem);
+  border-color: rgba(214, 180, 58, 0.22);
+  box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.18);
 }
 
 main ul,
@@ -176,27 +223,57 @@ main li {
   margin-top: 0.5rem;
 }
 
+/* Img ancho fijo*/
 img {
+  display: block;
+  width: min(100%, var(--img-fixed));
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 0.9rem;
   border: 0.08rem solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.30);
   filter: saturate(0.9) contrast(1.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    filter 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.015);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.35);
+  border-color: rgba(214, 180, 58, 0.28);
+  filter: saturate(1) contrast(1.06);
 }
 
 figure {
   margin-top: 1rem;
 }
 
+figure img {
+  width: min(100%, var(--img-fixed));
+}
+
+figure:hover img {
+  transform: scale(1.02);
+}
+
 figcaption {
   margin-top: 0.6rem;
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.70);
+  text-align: center;
 }
 
 video,
 iframe {
+  display: block;
   width: 100%;
   max-width: 44rem;
+  margin-left: auto;
+  margin-right: auto;
   border: 0;
   border-radius: 0.9rem;
   box-shadow: 0 0.9rem 1.8rem rgba(0, 0, 0, 0.35);
@@ -220,6 +297,7 @@ footer img {
   width: min(12rem, 65%);
 }
 
+
 main h2 {
   position: relative;
   padding-left: 0.85rem;
@@ -237,6 +315,8 @@ main h2::before {
   opacity: 0.75;
 }
 
+/* ========= ESTILOS POR PÁGINA ========= */
+
 .page-home main section:nth-of-type(1) {
   background:
     radial-gradient(40rem 18rem at 20% 0%, rgba(214, 180, 58, 0.12), transparent 65%),
@@ -249,9 +329,77 @@ main h2::before {
   gap: 1rem;
 }
 
+.page-home main {
+  max-width: 62rem;
+}
+
+.page-home main > h2 {
+  margin-top: 1.5rem;
+}
+
+.page-home main > h3 {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Float 1 y Float 2 (Home) */
+.page-home main > img:first-of-type {
+  float: left;
+  width: min(42%, 18rem);
+  margin: 0.3rem 1rem 0.8rem 0;
+}
+
+.page-home main > figure:nth-of-type(1) {
+  float: right;
+  width: min(42%, 18rem);
+  margin: 0.3rem 0 0.8rem 1rem;
+}
+
+.page-home main > figure:nth-of-type(1) img {
+  width: 100%;
+}
+
+.page-home main > h2:nth-of-type(2) {
+  clear: both;
+}
+
+
+.page-home main > figure,
+.page-home main > img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-home main > figure {
+  max-width: var(--img-fixed);
+}
+
+.page-home main > img {
+  max-width: var(--img-fixed);
+}
+
 .page-resume main {
-  width: 960px;
-  max-width: 92%;
+  width: min(92%, 60rem);
+}
+
+
+.page-resume main section:nth-of-type(1),
+.page-resume main section:nth-of-type(2) {
+  width: calc(50% - 0.5rem);
+  min-height: 14rem;
+}
+
+.page-resume main section:nth-of-type(1) {
+  float: left;
+  margin-right: 0.5rem;
+}
+
+.page-resume main section:nth-of-type(2) {
+  float: right;
+  margin-left: 0.5rem;
+}
+
+.page-resume main section:nth-of-type(3) {
+  clear: both;
 }
 
 .page-resume main ul {
@@ -271,14 +419,77 @@ main h2::before {
   font-size: 1.02rem;
 }
 
+
+.page-topic article > figure:nth-of-type(1) {
+  float: right;
+  width: min(46%, 20rem);
+  margin: 0.3rem 0 0.9rem 1rem;
+}
+
+.page-topic article > figure:nth-of-type(2) {
+  float: left;
+  width: min(46%, 20rem);
+  margin: 0.3rem 1rem 0.9rem 0;
+}
+
+.page-topic article > figure:nth-of-type(3) {
+  clear: both;
+}
+
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.8rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-glow {
+  0% {
+    box-shadow: 0 0 0 rgba(214, 180, 58, 0);
+  }
+  50% {
+    box-shadow: 0 0 1.2rem rgba(214, 180, 58, 0.10);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(214, 180, 58, 0);
+  }
+}
+
+
+@media (max-width: 64rem) {
+  header,
+  main,
+  footer {
+    width: 94%;
+  }
+
+  :root {
+    --img-fixed: 38rem;
+  }
+}
+
 @media (max-width: 48rem) {
   header {
-    padding: 1rem;
+    padding: 0.9rem; /* padding reducido */
     margin-top: 1.1rem;
   }
 
   main {
-    padding: 1rem;
+    padding: 0.85rem; /* padding reducido */
+  }
+
+  main section,
+  main article {
+    padding: 0.8rem; /* padding reducido */
+  }
+
+  footer {
+    padding: 0.9rem;
   }
 
   nav ul,
@@ -296,41 +507,92 @@ main h2::before {
   .page-resume main ul {
     columns: 1;
   }
+
+  /* En móvil, quitamos floats para que todo se apile bonito */
+  .page-home main > img:first-of-type,
+  .page-home main > figure:nth-of-type(1),
+  .page-resume main section:nth-of-type(1),
+  .page-resume main section:nth-of-type(2),
+  .page-topic article > figure:nth-of-type(1),
+  .page-topic article > figure:nth-of-type(2) {
+    float: none;
+    width: 100%;
+    margin: 0.75rem auto;
+  }
+
+  .page-home main > h2:nth-of-type(2),
+  .page-resume main section:nth-of-type(3),
+  .page-topic article > figure:nth-of-type(3) {
+    clear: none;
+  }
+
+  :root {
+    --img-fixed: 100%;
+  }
 }
 
+@media (max-width: 36rem) {
+  html {
+    font-size: 95%;
+  }
 
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
+  header {
+    padding: 0.8rem; /* más reducido en pantallas pequeñas */
+  }
+
+  main {
+    padding: 0.7rem; /* más reducido en pantallas pequeñas */
+  }
+
+  main section,
+  main article {
+    padding: 0.65rem;
+  }
+
+  footer {
+    padding: 0.75rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  nav ul,
+  header + ul,
+  header ul {
+    display: block;
+    text-align: center;
+  }
+
+  nav li {
+    margin-top: 0.45rem;
+  }
+
+  nav li:first-child {
+    margin-top: 0;
+  }
+
+  nav a,
+  header + ul a,
+  header ul a {
+    width: 100%;
+  }
+
+  img,
+  figure img {
+    width: 100%;
+  }
 }
 
-.page-home main > h2 {
-  margin-top: 1.5rem;
-}
-
-.page-home main > figure,
-.page-home main > img {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.page-home main > figure {
-  max-width: 44rem;
-}
-
-.page-home main > img {
-  max-width: 44rem;
-}
-
-.page-home main > h3 {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.page-home main {
-  max-width: 62rem;
-}
-nav a.active {
-  background-color: rgba(214, 180, 58, 0.18);
-  border-color: rgba(214, 180, 58, 0.45);
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
