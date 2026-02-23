@@ -284,9 +284,10 @@ footer img {
   display: block;
   width: 100%;
   max-width: none;
-  height: auto;
+  height: 4rem;
+  object-fit: contain;
+  object-position: center;
   margin: 0.85rem 0 0;
-  object-fit: fill;
 }
 
 main h2 {
@@ -561,4 +562,20 @@ iframe:hover {
 
 .page-home main > h2:nth-of-type(2) {
   clear: both;
+}
+
+/* Mismo ancho visual para header, main y footer en cada página */
+.page-home header,
+.page-home main,
+.page-home footer,
+.page-topic header,
+.page-topic main,
+.page-topic footer {
+  width: min(92%, 62rem);
+}
+
+.page-resume header,
+.page-resume main,
+.page-resume footer {
+  width: min(92%, 60rem);
 }
