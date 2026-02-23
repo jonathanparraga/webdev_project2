@@ -578,3 +578,44 @@ iframe:hover {
     height: 20rem;
   }
 }
+
+.page-home main > figure:nth-of-type(1) {
+  float: none !important;
+  display: block;
+  width: min(100%, 16rem);
+  max-width: 16rem;
+  margin: 0.75rem auto 1rem auto !important;
+  clear: both;
+}
+
+.page-home main > figure:nth-of-type(1) img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* Desktop: mantenerla centrada (sin float) para evitar el efecto raro */
+@media (min-width: 48.01rem) {
+  .page-home main > figure:nth-of-type(1) {
+    float: none !important;
+    width: min(100%, 18rem);
+    max-width: 18rem;
+    margin: 0.8rem auto 1.1rem auto !important;
+    clear: none;
+  }
+}
+
+/* Mobile: cambio visible para que no quede igual */
+@media (max-width: 48rem) {
+  .page-home main > figure:nth-of-type(1) {
+    width: min(100%, 13rem);
+    max-width: 13rem;
+    margin: 0.6rem auto 0.9rem auto !important;
+  }
+
+  .page-home main > figure:nth-of-type(1) figcaption {
+    font-size: 0.9rem;
+  }
+}
