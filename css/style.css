@@ -529,3 +529,35 @@ iframe:hover {
     height: 20rem;
   }
 }
+
+.page-home iframe {
+  width: 100%;
+  max-width: 50rem;
+  height: 32rem;
+  margin: 1rem auto;
+  display: block;
+  border: 0;
+}
+
+.page-home main > figure:nth-of-type(1) {
+  float: right;
+  width: min(34%, 14rem);
+  margin: 0.25rem 0 0.75rem 1rem;
+}
+
+.page-home main > figure:nth-of-type(1) img {
+  width: 100%;
+  height: auto;
+}
+
+
+.page-home main > img[src*="vzla_flag"] {
+  float: left;
+  width: min(22%, 8.5rem);
+  height: auto;
+  margin: 0.2rem 0.9rem 0.7rem 0;
+}
+
+.page-home main > h2:nth-of-type(2) {
+  clear: both;
+}
