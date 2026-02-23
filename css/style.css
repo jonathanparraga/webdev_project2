@@ -286,6 +286,7 @@ footer img {
   max-width: none;
   height: auto;
   margin: 0.85rem 0 0;
+  object-fit: fill;
 }
 
 main h2 {
