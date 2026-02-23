@@ -609,8 +609,22 @@ footer img[src*="venezuelan-flag"] {
   width: 100%;
   max-width: none;
   height: 4rem; 
-  object-fit: cover;
+  object-fit: fill;
   object-position: center;
   margin: 0.85rem 0 0;
   border-radius: 0.5rem;
+}
+
+.page-topic iframe {
+  display: block;
+  width: 100%;
+  max-width: 50rem;
+  height: 28rem;
+  margin: 1rem auto;
+  border: 0;
+}
+
+.page-resume a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
