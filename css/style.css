@@ -619,3 +619,32 @@ iframe:hover {
     font-size: 0.9rem;
   }
 }
+
+.page-home main > img[src*="vzla_flag"],
+.page-home main > img[src*="vzla-flag"],
+.page-home main > img[src*="welcome-ven"] {
+  width: min(22%, 8.5rem);
+  max-width: 8.5rem;
+  height: auto;
+}
+
+@media (min-width: 48.01rem) {
+  .page-home main > img[src*="vzla_flag"],
+  .page-home main > img[src*="vzla-flag"],
+  .page-home main > img[src*="welcome-ven"] {
+    float: left;
+    margin: 0.2rem 0.9rem 0.7rem 0;
+  }
+}
+
+@media (max-width: 48rem) {
+  .page-home main > img[src*="vzla_flag"],
+  .page-home main > img[src*="vzla-flag"],
+  .page-home main > img[src*="welcome-ven"] {
+    float: none;
+    display: block;
+    width: min(100%, 8rem);
+    max-width: 8rem;
+    margin: 0.6rem auto 0.9rem auto;
+  }
+}
