@@ -628,3 +628,21 @@ footer img[src*="venezuelan-flag"] {
   overflow-wrap: anywhere;
   word-break: break-word;
 }
+.page-resume main img,
+.page-resume img {
+  float: none;
+  display: block;
+  margin: 0.5rem auto 1rem auto;
+}
+
+.page-resume section,
+.page-resume article,
+.page-resume p,
+.page-resume ul {
+  clear: both;
+}
+
+.page-resume a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
