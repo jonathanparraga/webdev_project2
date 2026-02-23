@@ -596,3 +596,21 @@ main h2::before {
     transition: none !important;
   }
 }
+.page-home main > img[src*="vzla_flag"] {
+  width: min(28%, 10rem);
+  height: auto;
+  float: left;
+  margin: 0.3rem 1rem 0.8rem 0;
+}
+
+
+footer img[src*="venezuelan-flag"] {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 4rem; 
+  object-fit: cover;
+  object-position: center;
+  margin: 0.85rem 0 0;
+  border-radius: 0.5rem;
+}
