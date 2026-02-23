@@ -596,18 +596,18 @@ iframe:hover {
   margin: 0 auto;
 }
 
-/* Desktop: mantenerla centrada (sin float) para evitar el efecto raro */
+
 @media (min-width: 48.01rem) {
   .page-home main > figure:nth-of-type(1) {
     float: none !important;
-    width: min(100%, 18rem);
+    width: min(100%, 24rem);
     max-width: 18rem;
     margin: 0.8rem auto 1.1rem auto !important;
     clear: none;
   }
 }
 
-/* Mobile: cambio visible para que no quede igual */
+
 @media (max-width: 48rem) {
   .page-home main > figure:nth-of-type(1) {
     width: min(100%, 13rem);
