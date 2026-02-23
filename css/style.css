@@ -284,9 +284,7 @@ footer img {
   display: block;
   width: 100%;
   max-width: none;
-  height: 4rem;
-  object-fit: contain;
-  object-position: center;
+  height: auto;
   margin: 0.85rem 0 0;
 }
 
@@ -307,7 +305,24 @@ main h2::before {
   opacity: 0.75;
 }
 
-/* ========= ESTILOS POR PÁGINA ========= */
+
+.page-home header,
+.page-home main,
+.page-home footer,
+.page-topic header,
+.page-topic main,
+.page-topic footer {
+  width: min(92%, 62rem);
+  max-width: 62rem;
+}
+
+.page-resume header,
+.page-resume main,
+.page-resume footer {
+  width: min(92%, 60rem);
+  max-width: 60rem;
+}
+
 
 .page-home main {
   max-width: 62rem;
@@ -321,51 +336,45 @@ main h2::before {
   color: rgba(255, 255, 255, 0.85);
 }
 
-/* Float solo en Home */
-.page-home main > img:first-of-type {
-  float: left;
-  width: min(42%, 18rem);
-  margin: 0.3rem 1rem 0.8rem 0;
+
+.page-home main > img[src*="welcome-ven"],
+.page-home main > figure:nth-of-type(1) {
+  float: none;
+  display: block;
+  margin: 0.75rem auto 1rem auto;
+}
+
+.page-home main > img[src*="welcome-ven"] {
+  width: min(100%, 12rem);
+  height: auto;
 }
 
 .page-home main > figure:nth-of-type(1) {
-  float: right;
-  width: min(42%, 18rem);
-  margin: 0.3rem 0 0.8rem 1rem;
+  width: min(100%, 20rem);
 }
 
 .page-home main > figure:nth-of-type(1) img {
   width: 100%;
-}
-
-.page-home main > h2:nth-of-type(2) {
-  clear: both;
-}
-
-/* Si quieres la imagen vzla_flag más pequeña en Home */
-.page-home main > img[src*="vzla_flag"] {
-  width: min(28%, 10rem);
   height: auto;
 }
 
-/* Mantener centradas las demás imágenes/figuras en Home cuando no flotan */
-.page-home main > figure,
-.page-home main > img {
-  margin-left: auto;
-  margin-right: auto;
+.page-home main > h2:nth-of-type(2) {
+  clear: none;
 }
 
-.page-home main > figure {
-  max-width: var(--img-fixed);
+
+.page-home iframe {
+  width: 100%;
+  max-width: 50rem;
+  height: 32rem;
+  margin: 1rem auto;
+  display: block;
+  border: 0;
 }
 
-.page-home main > img {
-  max-width: var(--img-fixed);
-}
 
-/* RESUME: quitar floats para evitar superposición */
 .page-resume main {
-  width: min(92%, 60rem);
+  max-width: 60rem;
 }
 
 .page-resume main section:nth-of-type(1),
@@ -395,7 +404,8 @@ main h2::before {
   break-inside: avoid;
 }
 
-/* TOPIC */
+
+
 .page-topic main {
   max-width: 62rem;
 }
@@ -420,7 +430,6 @@ main h2::before {
   clear: both;
 }
 
-/* Aumentar altura del iframe YouTube en topic */
 .page-topic iframe {
   width: 100%;
   max-width: 50rem;
@@ -430,7 +439,8 @@ main h2::before {
   border: 0;
 }
 
-/* Hover animation para imágenes, videos e iframes */
+
+
 img,
 video,
 iframe {
@@ -448,6 +458,7 @@ iframe:hover {
   transform: scale(1.02);
   box-shadow: 0 0.9rem 1.8rem rgba(0, 0, 0, 0.28);
 }
+
 
 @keyframes fade-up {
   from {
@@ -475,6 +486,7 @@ iframe:hover {
   }
 }
 
+
 @media (max-width: 64rem) {
   header,
   main,
@@ -484,6 +496,25 @@ iframe:hover {
 
   :root {
     --img-fixed: 38rem;
+  }
+}
+
+@media (min-width: 48.01rem) {
+
+  .page-home main > img[src*="welcome-ven"] {
+    float: left;
+    width: min(22%, 8.5rem);
+    margin: 0.2rem 0.9rem 0.7rem 0;
+  }
+
+  .page-home main > figure:nth-of-type(1) {
+    float: none;
+    width: min(100%, 20rem);
+    margin: 0.8rem auto 1rem auto;
+  }
+
+  .page-home main > h2:nth-of-type(2) {
+    clear: both;
   }
 }
 
@@ -518,8 +549,23 @@ iframe:hover {
     padding: 0.55rem 0.8rem;
   }
 
-  .page-home main > img:first-of-type,
-  .page-home main > figure:nth-of-type(1),
+  .page-home main > img[src*="welcome-ven"] {
+    float: none;
+    display: block;
+    width: min(100%, 12rem);
+    margin: 0.75rem auto 1rem auto;
+  }
+
+  .page-home main > figure:nth-of-type(1) {
+    float: none;
+    width: min(100%, 20rem);
+    margin: 0.75rem auto 1rem auto;
+  }
+
+  .page-home main > h2:nth-of-type(2) {
+    clear: none;
+  }
+
   .page-topic article > figure:nth-of-type(1),
   .page-topic article > figure:nth-of-type(2) {
     float: none;
@@ -527,55 +573,8 @@ iframe:hover {
     margin: 0.75rem auto;
   }
 
+  .page-home iframe,
   .page-topic iframe {
     height: 20rem;
   }
-}
-
-.page-home iframe {
-  width: 100%;
-  max-width: 50rem;
-  height: 32rem;
-  margin: 1rem auto;
-  display: block;
-  border: 0;
-}
-
-.page-home main > figure:nth-of-type(1) {
-  float: right;
-  width: min(34%, 14rem);
-  margin: 0.25rem 0 0.75rem 1rem;
-}
-
-.page-home main > figure:nth-of-type(1) img {
-  width: 100%;
-  height: auto;
-}
-
-
-.page-home main > img[src*="vzla_flag"] {
-  float: left;
-  width: min(22%, 8.5rem);
-  height: auto;
-  margin: 0.2rem 0.9rem 0.7rem 0;
-}
-
-.page-home main > h2:nth-of-type(2) {
-  clear: both;
-}
-
-/* Mismo ancho visual para header, main y footer en cada página */
-.page-home header,
-.page-home main,
-.page-home footer,
-.page-topic header,
-.page-topic main,
-.page-topic footer {
-  width: min(92%, 62rem);
-}
-
-.page-resume header,
-.page-resume main,
-.page-resume footer {
-  width: min(92%, 60rem);
 }
